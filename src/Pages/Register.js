@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { registerUser } from '../Api/api';
-import { useOutletContext, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -27,7 +27,7 @@ const Register = () => {
 
   return (
     <div>
-      <h2>Register</h2>
+      <h2>Sign Up</h2>
       <form
         className="flex flex-col space-y-2 max-w-xl mx-auto px-4"
         onSubmit={handleOnSubmit}>
@@ -51,7 +51,7 @@ const Register = () => {
           />
         </div>
         <div className='flex flex-row-reverse ml-2'>
-          <button className="border border-black solid py-2 w-4/5 ">Register</button>
+          <button className="border border-black solid py-2 w-4/5 ">Submit</button>
         </div>
       </form>
     </div>

@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import Register from './Pages/Register';
 import Login from './Pages/Login';
+import Home from './Pages/Home';
+import Checkout from './Pages/Checkout';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
@@ -12,6 +14,14 @@ const router = createBrowserRouter([
     path: '/',
     element: <App />,
     children: [
+      {
+        path: 'home',
+        element: <Home />,
+      },
+      {
+        path:'cart',
+        element: <Checkout/>
+      },
       {
         path: 'register',
         element: <Register />,

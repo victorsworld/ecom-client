@@ -4,14 +4,20 @@ import './App.css';
 import { Outlet } from 'react-router-dom';
 
 function App() {
+  const [refreshToken, setRefreshToken] = useState(false);
   return (
-    <div className="App">
-      <NavBar />
-      {/* <h1 className="text-3xl font-bold underline text-red-500">
-        Hello world!
-      </h1> */}
+    <div className="text-center">
 
-      <Outlet />
+      <div className="p-2 border border-black border-solid text-lg font-serif text-neutral-50 bg-black">
+        <h3>Welcome To Our Store</h3>
+      </div>
+
+      <div className="p-1 border border-black border-solid ">
+      <NavBar /> <h1>Eternity is Now</h1>
+      </div>
+
+      
+      <Outlet context={{ setRefreshToken }} />
     </div>
   );
 }
