@@ -24,7 +24,7 @@ const loginUser = async (userData) => {
 
 const addToCart = async (shirtData) => {
 	try {
-	  const response = await axios.post(`${baseUrl}/addToCart`, shirtData);
+	  const response = await axios.post(`${baseUrl}/user/cart`, shirtData);
 	  const data = await response.data;
 	  return data;
 	} catch (error) {
