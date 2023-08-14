@@ -23,7 +23,7 @@ const Login = () => {
       setEmail('');
       setPassword('');
       setRefreshToken(false);
-      navigate('/todos');
+      navigate('/home');
     }
   };
 

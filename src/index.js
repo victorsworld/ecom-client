@@ -5,7 +5,8 @@ import App from './App';
 import Register from './Pages/Register';
 import Login from './Pages/Login';
 import Home from './Pages/Home';
-import Checkout from './Pages/Checkout';
+import Cart from './Pages/Cart';
+
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
       },
       {
         path:'cart',
-        element: <Checkout/>
+        element: <Cart/>
       },
       {
         path: 'register',
