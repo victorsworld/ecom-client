@@ -54,4 +54,20 @@ const addToCart = async (shirtData) => {
   }
 };
 
-export { registerUser, loginUser, addToCart, validateUser };
+const getCart = async () => {
+  try {
+    const token = getUserToken();
+    const response = await axios.get(`${baseUrl}/cart/getcart`,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await response.data;
+    return data;
+  } catch (error) {
+    console.log(error);
+    return error.response.data;
+  }
+};
+
+export { registerUser, loginUser,validateUser, addToCart, getCart };
