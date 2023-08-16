@@ -8,7 +8,7 @@ const Cart = () => {
   const [shouldRefetch, setShouldRefetch] = useState(false);
   const [subTotal, setSubTotal] = useState(0)
 
-  const { isVerified, userToken } = useOutletContext();
+  const { isVerified, userToken, } = useOutletContext();
   
 
   useEffect(() => {
@@ -38,6 +38,7 @@ const Cart = () => {
         return <CartItem item={item} key={item._id}
         setShouldRefetch={setShouldRefetch}/>
       })}
+      <p>subTotal: {subTotal}</p>
       </ul>): (
         <h1>Cart Is Empty</h1>
       )}
