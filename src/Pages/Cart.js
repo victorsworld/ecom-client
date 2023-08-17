@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, useOutletContext } from "react-router-dom";
-import { getCart } from '../Api/api';
+import { getCart,} from '../Api/api';
 import CartItem from '../Components/CartItem';
 
 const Cart = () => {
@@ -17,7 +17,11 @@ const Cart = () => {
         const cartResponse = await getCart();
         if (cartResponse.success) {
           setProducts(cartResponse.data.product);
-          setSubTotal(cartResponse.data.subTotal)
+          const math = cartResponse.data.product.reduce((a,b)=>{ 
+            return b.price + a
+          }, 0)
+          console.log(math)
+          setSubTotal(math)
         }
       } catch (error) {
         console.log(error);
@@ -29,7 +33,8 @@ const Cart = () => {
     }
   }, [isVerified, shouldRefetch]);
   
-
+  // handle a fecth call that multiplys the price to the quantity and updates the subtotal while checking the cart for any other products to add into the over all subtotal.
+  
   return (
     <div>
       <h2>Cart</h2>

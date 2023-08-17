@@ -70,4 +70,20 @@ const getCart = async () => {
   }
 };
 
-export { registerUser, loginUser,validateUser, addToCart, getCart };
+const editCart = async (id, info) => {
+  try {
+    const token = getUserToken();
+    const response = await axios.put(`${baseUrl}/cart/editcart/${id}`, info,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await response.data;
+    return data;
+  } catch (error) {
+    console.log(error);
+    return error.response.data;
+  }
+}
+
+export { registerUser, loginUser,validateUser, addToCart, getCart, editCart };
