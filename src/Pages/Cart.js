@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Outlet, useOutletContext } from "react-router-dom";
+import {useOutletContext } from "react-router-dom";
 import { getCart,} from '../Api/api';
 import CartItem from '../Components/CartItem';
-
+import CheckOut from '../Components/CheckOut';
 const Cart = () => {
   const [products, setProducts] = useState([]);
   const [shouldRefetch, setShouldRefetch] = useState(false);
   const [subTotal, setSubTotal] = useState(0)
-
-  const { isVerified, userToken, } = useOutletContext();
+  const [checkout, setCheckOut] = useState(false)
+  const { isVerified, } = useOutletContext();
   
 
   useEffect(() => {
@@ -32,23 +32,27 @@ const Cart = () => {
       fetchCart(); 
     }
   }, [isVerified, shouldRefetch]);
+
+
   
-  // handle a fecth call that multiplys the price to the quantity and updates the subtotal while checking the cart for any other products to add into the over all subtotal.
   
   return (
     <div>
       <h2>Cart</h2>
-      {products.length > 0 ? (<ul>
-      {products.map((item) => {
-        return <CartItem item={item} key={item._id}
-        setShouldRefetch={setShouldRefetch}/>
-      })}
-      <p>subTotal: {subTotal}</p>
-      </ul>): (
+      {products.length > 0 ? (
+        <ul>
+          {products.map((item) => {
+            return <CartItem item={item} key={item._id} setShouldRefetch={setShouldRefetch} />;
+          })}
+          <p>subTotal: {subTotal}</p>
+          <button onClick={() =>{setCheckOut(true)}}>Checkout</button>
+        </ul>
+      ) : (
         <h1>Cart Is Empty</h1>
       )}
-    
-    
+     {checkout && 
+     < CheckOut products={products} setCheckOut={setCheckOut} />
+     }
     </div>
   );
 };
