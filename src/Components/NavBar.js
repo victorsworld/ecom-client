@@ -20,20 +20,23 @@ const NavBar = ({
     }
   };
   return (
-    <div style={{ display: "flex", justifyContent: "space-around" }}>
-      <Link to={'/home'}>Home</Link>{' '}
-      <Link to={'/cart'}>Cart</Link>{' '}
+    <div>
+      <Link className="flex justify-center" to={'/home'}>
+        Eternity Is Now
+      </Link>
       {isVerified ? (
-        <span>
-          {' '}
-          {user} {' '}
+        <div className="flex justify-end space-x-5 px-4">
+          <Link to={'/order'}>Order History</Link>
+          <Link to={'/cart'}>Cart</Link>
+          <div>
+          {user}
+          </div>
           <Link onClick={handleLogout}>Logout</Link>
-        </span>
+        </div>
       ) : (
         <span>
-          <Link to={'/login'}>Login</Link> {' '}
-          <Link to={'/register'}>Register</Link> {' '}
-          
+          <Link to={'/login'}>Login</Link>{' '}
+          <Link to={'/register'}>Register</Link>{' '}
         </span>
       )}
     </div>

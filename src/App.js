@@ -45,7 +45,6 @@ function App() {
           setUser={setUser}
           setIsVerified={setIsVerified}
         />{' '}
-        <h1>Eternity is Now</h1>
       </div>
 
       <Outlet context={{ setRefreshToken, isVerified, userToken }} />

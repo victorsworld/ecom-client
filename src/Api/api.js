@@ -102,11 +102,10 @@ const deleteCartItem = async (id) => {
   }
 };
 
-
-const fillOrder = async (shirtData) => {
+const deleteCart = async () => {
   try {
     const token = getUserToken();
-    const response = await axios.post(`${baseUrl}/order/create-order`, shirtData, {
+    const response = await axios.delete(`${baseUrl}/cart/deletecart`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -119,21 +118,9 @@ const fillOrder = async (shirtData) => {
   }
 };
 
-const orderHistory = async () =>{
-  try {
-    const token = getUserToken();
-    const response = await axios.get(`${baseUrl}/order/order-history`,{
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const data = await response.data;
-    return data;
-  } catch (error) {
-    console.log(error);
-    return error.response.data;
-  }
-}
 
 
-export { registerUser, loginUser,validateUser, addToCart, getCart, editCart, deleteCartItem };
+
+
+
+export { registerUser, loginUser,validateUser, addToCart, getCart, editCart, deleteCartItem, deleteCart};

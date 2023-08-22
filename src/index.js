@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+
 import App from './App';
 import Register from './Pages/Register';
 import Login from './Pages/Login';
 import Home from './Pages/Home';
 import Cart from './Pages/Cart';
+import OrderHistory from './Pages/OrderHistory';
 
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -20,8 +22,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path:'cart',
-        element: <Cart/>
+        path: 'cart',
+        element: <Cart />,
       },
       {
         path: 'register',
@@ -30,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <Login />,
+      },
+      {
+        path: 'order',
+        element: <OrderHistory />,
       },
     ],
   },
