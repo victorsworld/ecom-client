@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { fillOrder } from '../Api/apiorder'; 
 import { useNavigate } from 'react-router-dom';
 import { deleteCart } from '../Api/api';
-import OrderHistory from '../Pages/OrderHistory';
+import { editFinalProduct } from '../Api/apiorder';
 
 const CheckOut = ({ products, setCheckOut, subTotal, setProducts }) => {
   const [firstname, setFirstname] = useState('');
@@ -61,15 +61,25 @@ const CheckOut = ({ products, setCheckOut, subTotal, setProducts }) => {
     };
 
     try {
-      const response = await fillOrder(orderData);
-      if (response.success) {
-        handleDeleteCart()
-        setCheckOut(false);
-        navigate('/'); 
+        const response = await fillOrder(orderData);
+        if (response.success) {
+          // for (const product of products) {
+          //   const editProductData = {
+          //     size: product.size,
+          //     color: product.color,
+          //     quantity: -product.quantity, // Subtract the purchased quantity from inventory
+          //   };
+          //   await editFinalProduct(product._id, editProductData);
+          // }
+    
+          
+          handleDeleteCart();
+          setCheckOut(false);
+          navigate('/order');
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (

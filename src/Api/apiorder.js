@@ -34,6 +34,22 @@ const fillOrder = async (shirtData) => {
       return error.response.data;
     }
   }
+  // const editFinalProduct = async (id, info) => {
+  //   try {
+  //     // const token = getUserToken();
+  //     const response = await axios.put(`${baseUrl}/admin/edit-final-product/${id}`, info, 
+  //     // {
+  //     //   headers: {
+  //     //     Authorization: `Bearer ${token}`,
+  //     //   },
+  //     // }
+  //     );
+  //     const data = await response.data;
+  //     return data;
+  //   } catch (error) {
+  //     console.log(error);
+  //     return error.response.data;
+  //   }
+  // };
 
-
-export { fillOrder, orderHistory}
+export { fillOrder, orderHistory,}
